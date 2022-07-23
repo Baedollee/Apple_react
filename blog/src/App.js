@@ -10,7 +10,8 @@ function App() {
     '나동 코트 추천',
   ]);
 
-  let [like, likeChange] = useState(0);
+  let [like, likeChange] = useState([0, 0, 0]);
+  let [modal, setModal] = useState(false);
 
   return (
     <div className="App">
@@ -44,34 +45,64 @@ function App() {
               likeChange(like + 1);
             }}>
             👍
-          </span>{' '}
+          </span>
           {like}
         </h4>
         <p>7월 22일 발행</p>
       </div>
       <div className="list">
-        <h4>{text[1]}</h4>
-        <p>7월 22일 발행</p>
-      </div>
-      <div className="list">
-        <h4>{text[2]}</h4>
+        <h4
+          onClick={() => {
+            setModal(!modal);
+          }}>
+          {text[1]}
+        </h4>
         <p>7월 22일 발행</p>
       </div>
 
-      <Modal></Modal>
-      <Modal />
+      <Title />
+      <div>
+        {text.map(function (a, i) {
+          return (
+            <div className="list" key={i}>
+              <h4>
+                {text[i]}
+                <span
+                  onClick={() => {
+                    let copy = [...like];
+                    copy[i] = copy[i] + 1;
+                    likeChange(copy);
+                  }}>
+                  👍
+                </span>
+                {like[i]}
+              </h4>
+              <p>2월 18일 발행</p>
+            </div>
+          );
+        })}
+      </div>
+      {modal == true ? <Modal text={text} /> : null}
     </div>
   );
 }
 
-let Modal = () => {
+let Modal = (props) => {
   return (
     <div className="modal">
-      <h4>title</h4>
+      <h4>{props.text}</h4>
       <p>day</p>
       <p>detail</p>
     </div>
   );
 };
-
+function Title() {
+  return (
+    <div className="list">
+      <h4>여자 옷!</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+    </div>
+  );
+}
 export default App;
