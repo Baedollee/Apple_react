@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Done = ({ title, contents, setTodoList, todoList }) => {
+const Done = ({ title, contents, setTodoList, todoList, id }) => {
   const handleDelete = () => {
     let changeArray = [];
     todoList.map((item, index) => {

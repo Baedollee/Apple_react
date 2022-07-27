@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Todo = ({ title, contents, todoList, setTodoList }) => {
+const Todo = ({ title, contents, todoList, setTodoList, id }) => {
+  console.log(todoList);
   const handleDelete = () => {
     let changeArray = [];
+    console.log(id);
     todoList.map((item, index) => {
       if (item.title !== title) {
         changeArray.push(item);

@@ -10,19 +10,24 @@ const Form = ({ inputForm, todoList, setInputForm, setTodoList }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodoList([...todoList, inputForm]);
+    setTodoList([
+      ...todoList,
+      { ...inputForm, id: todoList.length + 1, done: false },
+    ]);
     setInputForm({ title: '', contents: '' });
   };
-
+  console.log(todoList);
   return (
     <Head>
-      <InputWrap onSubmit={handleSubmit}>
+      <InputWrap>
         <h2>제목</h2>
         <InputAdd value={inputForm.title} onChange={handleTitle} />
         <h2>내용</h2>
         <InputAdd value={inputForm.contents} onChange={handleContents} />
-        <InputBtn type="submit">추가하기</InputBtn>
       </InputWrap>
+      <InputBtn type="submit" onClick={handleSubmit}>
+        추가하기
+      </InputBtn>
     </Head>
   );
 };
