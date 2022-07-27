@@ -12,6 +12,17 @@ const Todo = ({ title, contents, todoList, setTodoList }) => {
     setTodoList(changeArray);
   };
 
+  const handleDone = () => {
+    let changeArr = [];
+    todoList.map((item, index) => {
+      if (item.title === title) {
+        changeArr.push({ ...item, done: true });
+      } else {
+        changeArr.push(item);
+      }
+    });
+    setTodoList(changeArr);
+  };
   return (
     <>
       <Wrap>
@@ -19,7 +30,7 @@ const Todo = ({ title, contents, todoList, setTodoList }) => {
         <Contents>{contents}</Contents>
         <ButtonWrap>
           <ButtonDelete onClick={handleDelete}>삭제하기</ButtonDelete>
-          <ButtonComplete>완료</ButtonComplete>
+          <ButtonComplete onClick={handleDone}>완료</ButtonComplete>
         </ButtonWrap>
       </Wrap>
     </>

@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+
 const Done = ({ title, contents, setTodoList, todoList }) => {
   const handleDelete = () => {
     let changeArray = [];
@@ -10,7 +11,7 @@ const Done = ({ title, contents, setTodoList, todoList }) => {
     });
     setTodoList(changeArray);
   };
-  const handleDone = () => {
+  const handleCancel = () => {
     let changeArr = [];
     todoList.map((item, index) => {
       if (item.title === title) {
@@ -28,7 +29,7 @@ const Done = ({ title, contents, setTodoList, todoList }) => {
         <Contents>{contents}</Contents>
         <ButtonWrap>
           <ButtonDelete onClick={handleDelete}>삭제하기</ButtonDelete>
-          <ButtonComplete onClick={handleDone}>취소</ButtonComplete>
+          <ButtonComplete onClick={handleCancel}>취소</ButtonComplete>
         </ButtonWrap>
       </Wrap>
     </>
