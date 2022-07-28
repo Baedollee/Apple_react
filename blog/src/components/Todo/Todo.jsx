@@ -7,7 +7,7 @@ const Todo = ({ title, contents, todoList, setTodoList, id }) => {
     let changeArray = [];
     console.log(id);
     todoList.map((item, index) => {
-      if (item.title !== title) {
+      if (item.id !== id) {
         changeArray.push(item);
       }
     });
@@ -17,7 +17,7 @@ const Todo = ({ title, contents, todoList, setTodoList, id }) => {
   const handleDone = () => {
     let changeArr = [];
     todoList.map((item, index) => {
-      if (item.title === title) {
+      if (item.id === id) {
         changeArr.push({ ...item, done: true });
       } else {
         changeArr.push(item);

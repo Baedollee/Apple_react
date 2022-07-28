@@ -5,7 +5,7 @@ const Done = ({ title, contents, setTodoList, todoList, id }) => {
   const handleDelete = () => {
     let changeArray = [];
     todoList.map((item, index) => {
-      if (item.title !== title) {
+      if (item.id !== id) {
         changeArray.push(item);
       }
     });
@@ -14,7 +14,7 @@ const Done = ({ title, contents, setTodoList, todoList, id }) => {
   const handleCancel = () => {
     let changeArr = [];
     todoList.map((item, index) => {
-      if (item.title === title) {
+      if (item.id === id) {
         changeArr.push({ ...item, done: false });
       } else {
         changeArr.push(item);

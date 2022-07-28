@@ -7,8 +7,8 @@ import Done from '../components/Done/Done';
 
 const Home = () => {
   const [todoList, setTodoList] = useState([
-    { title: '타이틀1', contents: '컨텐츠1', done: false, id: 0 },
-    { title: '타이틀2', contents: '컨텐츠2', done: true, id: 1 },
+    { title: '타이틀2', contents: '컨텐츠2', done: false, id: 1 },
+    { title: '타이틀2', contents: '컨텐츠2', done: true, id: 2 },
   ]);
 
   // 저기 리액트.usestate 왜 저렇게?
