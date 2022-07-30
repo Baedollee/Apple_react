@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { postList } from '../../redux/reducer/listReducer';
 
-const Form = ({ inputForm, todoList, setInputForm, setTodoList }) => {
+const Form = () => {
+  const [inputForm, setInputForm] = useState({
+    title: '',
+    contents: '',
+    done: false,
+  });
+  const dispatch = useDispatch();
+  const todoList = useSelector((state) => state.listReducer.list);
   const handleTitle = (e) => {
     setInputForm({ ...inputForm, title: e.target.value });
   };
@@ -10,13 +19,19 @@ const Form = ({ inputForm, todoList, setInputForm, setTodoList }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    setTodoList([
-      ...todoList,
-      { ...inputForm, id: todoList.length + 1, done: false },
-    ]);
-    setInputForm({ title: '', contents: '' });
+    if (inputForm.title === '' || inputForm.contents === '') {
+      alert('값을 넣어주세요');
+    } else {
+      dispatch(
+        postList({
+          title: inputForm.title,
+          contents: inputForm.contents,
+          id: `${todoList.length}_${todoList.title}`,
+        })
+      );
+      setInputForm({ title: '', contents: '' });
+    }
   };
-  console.log(todoList);
   return (
     <Head>
       <InputWrap>

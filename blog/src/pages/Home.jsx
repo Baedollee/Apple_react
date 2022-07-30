@@ -1,32 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from '../components/Form/Form';
 import Header from '../components/Header/Header';
 import Todo from '../components/Todo/Todo';
 import styled from 'styled-components';
 import Done from '../components/Done/Done';
+import { useSelector } from 'react-redux';
 
 const Home = () => {
-  const [todoList, setTodoList] = useState([
-    { title: '타이틀', contents: '컨텐츠', done: false, id: 1 },
-    { title: '타이틀', contents: '컨텐츠', done: true, id: 2 },
-  ]);
+  const todoList = useSelector((state) => state.listReducer.list);
 
-  const [inputForm, setInputForm] = useState({
-    title: '',
-    contents: '',
-    done: false,
-  });
+  useEffect(() => {
+    return () => {};
+  }, []);
 
   return (
     <Wrap>
       <Header />
 
-      <Form
-        inputForm={inputForm}
-        todoList={todoList}
-        setInputForm={setInputForm}
-        setTodoList={setTodoList}
-      />
+      <Form />
 
       <InputTitle>해야할일!</InputTitle>
 
@@ -38,8 +29,6 @@ const Home = () => {
                 key={item.id}
                 title={item.title}
                 contents={item.contents}
-                todoList={todoList}
-                setTodoList={setTodoList}
                 id={item.id}
               />
             );
@@ -59,8 +48,6 @@ const Home = () => {
                 key={item.id}
                 title={item.title}
                 contents={item.contents}
-                todoList={todoList}
-                setTodoList={setTodoList}
                 id={item.id}
               />
             );

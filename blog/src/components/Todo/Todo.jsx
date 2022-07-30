@@ -1,29 +1,16 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { changeDoneList, deleteList } from '../../redux/reducer/listReducer';
 
-const Todo = ({ title, contents, todoList, setTodoList, id }) => {
-  console.log(todoList);
+const Todo = ({ title, contents, id }) => {
+  const dispatch = useDispatch();
   const handleDelete = () => {
-    let changeArray = [];
-    console.log(id);
-    todoList.map((item, index) => {
-      if (item.id !== id) {
-        changeArray.push(item);
-      }
-    });
-    setTodoList(changeArray);
+    dispatch(deleteList(id));
   };
 
   const handleDone = () => {
-    let changeArr = [];
-    todoList.map((item, index) => {
-      if (item.id === id) {
-        changeArr.push({ ...item, done: true });
-      } else {
-        changeArr.push(item);
-      }
-    });
-    setTodoList(changeArr);
+    dispatch(changeDoneList(id));
   };
   return (
     <>
