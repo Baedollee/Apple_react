@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { changeDoneList, deleteList } from '../../redux/reducer/listReducer';
 import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Done = ({ title, contents, setTodoList, todoList, id }) => {
   const dispatch = useDispatch();
@@ -15,6 +16,7 @@ const Done = ({ title, contents, setTodoList, todoList, id }) => {
   return (
     <>
       <Wrap>
+        <Link to={`/detail/${id}`}>상세보기</Link>
         <Title>{title}</Title>
         <Contents>{contents}</Contents>
         <ButtonWrap>

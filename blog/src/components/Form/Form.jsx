@@ -26,7 +26,7 @@ const Form = () => {
         postList({
           title: inputForm.title,
           contents: inputForm.contents,
-          id: `${todoList.length}_${todoList.title}`,
+          id: `${todoList.length}_${inputForm.title}`,
         })
       );
       setInputForm({ title: '', contents: '' });
