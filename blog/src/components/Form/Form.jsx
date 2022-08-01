@@ -11,6 +11,7 @@ const Form = () => {
   });
   const dispatch = useDispatch();
   const todoList = useSelector((state) => state.listReducer.list);
+
   const handleTitle = (e) => {
     setInputForm({ ...inputForm, title: e.target.value });
   };
