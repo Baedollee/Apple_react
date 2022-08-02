@@ -8,7 +8,6 @@ import { useSelector } from 'react-redux';
 
 const Home = () => {
   const todoList = useSelector((state) => state.listReducer.list);
-
   useEffect(() => {
     return () => {};
   }, []);
