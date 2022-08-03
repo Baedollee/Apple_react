@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Detail = () => {
   const [item, setItem] = useState({});
   const params = useParams();
   const { id } = params;
   const listItem = useSelector((state) => state.listReducer.list);
-
+  let navigate = useNavigate();
   useEffect(() => {
     if (!listItem || listItem.length <= 0) {
       return;
@@ -35,8 +35,9 @@ const Detail = () => {
         <div>
           <HeadDiv>
             <p>ID:{item.id}</p>
-            <Btn>
-              <Link to={`../`}>이전으로</Link>
+            <Btn onClick={() => navigate(-1)}>
+              이전으로
+              {/* <Link to={`../`}>이전으로</Link> */}
             </Btn>
           </HeadDiv>
           <TitleH1>{item.title}</TitleH1>

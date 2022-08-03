@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { changeDoneList, deleteList } from '../../redux/reducer/listReducer';
 import { useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Done = ({ title, contents, setTodoList, todoList, id }) => {
   const dispatch = useDispatch();
@@ -13,10 +13,16 @@ const Done = ({ title, contents, setTodoList, todoList, id }) => {
   const handleCancel = () => {
     dispatch(changeDoneList(id));
   };
+  let navigate = useNavigate();
   return (
     <>
       <Wrap>
-        <Link to={`/detail/${id}`}>상세보기</Link>
+        <NavDiv
+          onClick={() => {
+            navigate(`/detail/${id}`);
+          }}>
+          상세보기
+        </NavDiv>
         <Title>{title}</Title>
         <Contents>{contents}</Contents>
         <ButtonWrap>
@@ -67,6 +73,10 @@ const ButtonComplete = styled.button`
   cursor: pointer;
   height: 40px;
   width: 50%;
+`;
+const NavDiv = styled.div`
+  color: -webkit-link;
+  cursor: pointer;
 `;
 
 export default Done;
