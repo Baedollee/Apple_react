@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Form from '../components/Form/Form';
 import Header from '../components/Header/Header';
 import Todo from '../components/Todo/Todo';
@@ -21,7 +21,7 @@ const Home = () => {
       <InputTitle>해야할일!</InputTitle>
 
       <TodoListWrap>
-        {todoList.map((item, index) => {
+        {todoList.map((item) => {
           if (!item.done) {
             return (
               <Todo
@@ -40,7 +40,7 @@ const Home = () => {
       <InputTitle>완료!!</InputTitle>
 
       <TodoListWrap>
-        {todoList.map((item, index) => {
+        {todoList.map((item) => {
           if (item.done) {
             return (
               <Done

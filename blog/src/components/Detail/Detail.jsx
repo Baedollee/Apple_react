@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Detail = () => {
   const [item, setItem] = useState({});
@@ -14,7 +14,7 @@ const Detail = () => {
     if (!listItem || listItem.length <= 0) {
       return;
     }
-    listItem.map((item, index) => {
+    listItem.map((item) => {
       if (item.id === id) {
         setItem(item);
         return;

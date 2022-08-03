@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { changeDoneList, deleteList } from '../../redux/reducer/listReducer';
 import { useDispatch } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Done = ({ title, contents, setTodoList, todoList, id }) => {
   const dispatch = useDispatch();

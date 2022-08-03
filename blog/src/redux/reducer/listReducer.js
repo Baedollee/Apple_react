@@ -15,7 +15,7 @@ export const listSlice = createSlice({
     deleteList: (state, action) => {
       // action.payload = id
       let dummyArray = [];
-      state.list.map((item, index) => {
+      state.list.map((item) => {
         if (item.id === action.payload) {
         } else {
           dummyArray.push(item);
@@ -25,7 +25,7 @@ export const listSlice = createSlice({
     },
     changeDoneList: (state, action) => {
       // action.payload = id
-      state.list.map((item, index) => {
+      state.list.map((item) => {
         if (item.id === action.payload) {
           item.done = !item.done;
           return;
