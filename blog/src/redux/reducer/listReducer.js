@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const listSlice = createSlice({
   name: 'list',
+  // 초기값 설정
   initialState: {
     list: [
       { title: '타이틀', contents: '컨텐츠', done: false, id: '0_타이틀' },
