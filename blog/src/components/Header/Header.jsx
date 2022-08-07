@@ -18,4 +18,5 @@ const Container = styled.div`
   justify-content: space-between;
   padding: 0 20px;
 `;
+
 export default Header;
